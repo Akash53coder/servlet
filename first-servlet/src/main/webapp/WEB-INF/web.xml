@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<display-name>first-servlet</display-name>
+	<welcome-file-list>
+		<!-- <welcome-file>index.html</welcome-file> -->
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	<!-- creating an object by writing it in web.xml internally server uses 
+		new -->
+	<servlet>
+		<servlet-name>akashServlet</servlet-name>
+		<servlet-class>com.xworkz.web.servlet.AkashServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>searchServlet</servlet-name>
+		<servlet-class>com.xworkz.web.servlet.SearchServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>searchServlet</servlet-name>
+		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
+
+</web-app>
