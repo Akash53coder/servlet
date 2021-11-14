@@ -24,28 +24,29 @@ public class ServletJdbc extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String name = request.getParameter("name");
-//		String yop = request.getParameter("yop");
+		String yop = request.getParameter("yop");
 		String education = request.getParameter("education");
 		String type = request.getParameter("type");
-		int yopi = Integer.valueOf(request.getParameter("yop"));
-		System.out.println(name+" "+yopi+" "+education+" "+type);
+		System.out.println(name+" "+yop+" "+education+" "+type);
 		
 		
 		try {
             Connection con = XworkzDAO.getConnection();
+            System.out.println(con);
             PreparedStatement statement = con.prepareStatement("insert into xworkz_people values(?, ?, ?, ?)");
-            statement.setString(1, name);
-            statement.setInt(2, yopi);
-            statement.setString(3, education);
-            statement.setString(4, type);
+            statement.setString(1, request.getParameter("name"));            
+            statement.setString(2, request.getParameter("education"));
+            statement.setString(3, request.getParameter("type"));
+            statement.setString(4, request.getParameter("yop"));
             statement.executeUpdate();
-            statement.close();
-            con.close();
             PrintWriter out = response.getWriter();
             out.println("<html><body><h1 style='color:red'><b>Successfully Inserted"
                         + "</b></h1></body></html>");
+            statement.close();
+            con.close();
+           
 		}catch(Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
 		
 		

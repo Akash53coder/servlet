@@ -8,7 +8,7 @@ public class XworkzDAO {
 
 	public static Connection getConnection() {
 
-		String url="jdbc:mysql://localhost:3306/students";
+		String url="jdbc:mysql://localhost:3306/xworkz";
 		String username = "root";
 		String password = "Akash@006";
 		Connection connection=null;
@@ -22,13 +22,13 @@ public class XworkzDAO {
 			System.out.println(e.getMessage());
 			
 		}
-		finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+//		finally {
+//			try {
+//				connection.close();
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//		}
 		return connection;
 
 	}
